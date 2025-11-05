@@ -13,6 +13,8 @@ class Cliente:
     
     @cpf.setter
     def cpf(self,value):
+        if value is None:
+            raise ValueError("CPF nulo")
         value = ''.join(filter(str.isdigit, str(value)))
 
         if len(value) !=11:
@@ -38,6 +40,8 @@ class Cliente:
     
     @nome.setter
     def nome(self,value):
+        if value is None:
+            raise ValueError("Nome nulo")
         value = value.strip()
         pattern = r"^[A-Za-zÀ-ÿ]{2,}(?:['-][A-Za-zÀ-ÿ]{2,})*(?:\s+[A-Za-zÀ-ÿ]{2,}(?:['-][A-Za-zÀ-ÿ]{2,})*)+$"
 
@@ -52,6 +56,8 @@ class Cliente:
     
     @telefone.setter
     def telefone(self,value):
+        if value is None:
+            raise ValueError("Telefone nulo")
         value = ''.join(filter(str.isdigit, str(value)))
 
         if len(value) != 11:

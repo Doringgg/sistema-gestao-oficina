@@ -16,6 +16,8 @@ class Carro:
     
     @placa.setter
     def placa(self,value):
+        if value is None:
+            raise ValueError("Placa nulo")
         value = value.upper().strip()
         value = re.sub(r'[-\s]', '', value)
         if len(value) != 7:
@@ -41,6 +43,8 @@ class Carro:
     
     @montadora.setter
     def montadora(self,value):
+        if value is None:
+            raise ValueError("Montadora nula")
         value = value.strip()
         pattern = r"^(?=.*[A-Za-zÀ-ÿ])[A-Za-zÀ-ÿ0-9\s\-&.,()]{2,50}$"
         if not re.match(pattern, value):
@@ -58,6 +62,8 @@ class Carro:
     
     @modelo.setter
     def modelo(self,value):
+        if value is None:
+            raise ValueError("Modelo nulo")
         value = value.strip()
         pattern = r"^[A-Za-zÀ-ÿ0-9][A-Za-zÀ-ÿ0-9\s\-\.\+/\(\)]{0,49}$"
         if not re.match(pattern, value):
@@ -79,6 +85,8 @@ class Carro:
     
     @cor.setter
     def cor(self,value):
+        if value is None:
+            raise ValueError("Cor nula")
         value = value.strip()
         invalid_patterns = [
         r"^\d+$",                           # Apenas números: "123"
