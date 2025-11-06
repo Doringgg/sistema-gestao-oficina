@@ -1,0 +1,25 @@
+{
+    "create":
+    {
+        "carro":{
+            "placa":"",
+            "montadora":"",
+            "modelo":"",
+            "cor":"",
+            "cliente":{
+                "clientes_cpf":""
+            }
+        }
+    },
+    "update":
+    {
+        "carro":{
+            "montadora":"",
+            "modelo":"",
+            "cor":"",
+            "cliente":{
+                "clientes_cpf":""
+            }
+        }
+    }
+}
