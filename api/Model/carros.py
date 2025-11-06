@@ -8,7 +8,7 @@ class Carro:
         self.__montadora = None
         self.__modelo = None
         self.__cor = None
-        self.__clientes_cpf = None
+        self.__cliente = None
 
     @property
     def placa(self):
@@ -107,11 +107,11 @@ class Carro:
 
     
     @property
-    def clientes_cpf(self):
-        return self.__clientes_cpf
+    def cliente(self):
+        return self.__cliente
     
-    @clientes_cpf.setter
-    def clientes_cpf(self,value):
-        if not isinstance(value,Cliente):
+    @cliente.setter
+    def cliente(self,value):
+        if not isinstance(value, Cliente):
             raise ValueError("Cliente deve ser uma instância válida de Cliente")
-        self.__clientes_cpf = value
+        self.__cliente = value

@@ -3,9 +3,26 @@ from argon2 import PasswordHasher
 
 class Usuario: 
     def __init__(self):
+        self.__id = None
         self.__email = None
         self.__senha = None
 
+    @property
+    def id(self):
+        return self.__id
+    
+    @id.setter
+    def id(self, value):
+        try:
+            parsed = int(value)
+        except(ValueError, TypeError):
+            raise ValueError("Id deve ser um número inteiro")
+        
+        if parsed <= 0:
+            raise ValueError("Id deve ser um número maior que zero")
+        
+        self.__id = parsed
+    
     @property
     def email(self):
         return self.__email

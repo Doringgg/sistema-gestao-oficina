@@ -1,4 +1,3 @@
-from utils import cpfVerify
 import re
 
 class Cliente:
