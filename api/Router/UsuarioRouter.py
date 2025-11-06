@@ -1,14 +1,12 @@
 from flask import Blueprint, request
 from functools import wraps
-from api.Middleware.jwt_middleware import JwtMiddleware
 from api.Middleware.UsuariosMiddleware import UsuarioMiddleware
 from api.Control.UsuariosControl import UsuariosControl
 
 class UsuarioRouter:
-    def __init__(self, jwt_middleware:JwtMiddleware, usuario_middleware:UsuarioMiddleware, usuario_control:UsuariosControl):
+    def __init__(self, usuario_middleware:UsuarioMiddleware, usuario_control:UsuariosControl):
 
-        print("⬆️  UsuarioRoteador.__init__()")
-        self.jwt_middleware = jwt_middleware
+        print("⬆️  UsuarioRouter.__init__()")
         self.usuario_middleware = usuario_middleware
         self.usuario_control = usuario_control
 
@@ -20,3 +18,4 @@ class UsuarioRouter:
         def login():
             print("usuarioRouter.login()")
             return self.usuario_control.login()
+        return self.blueprint
