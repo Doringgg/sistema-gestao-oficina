@@ -23,3 +23,6 @@ CREATE TABLE usuarios (
     email VARCHAR(150) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL
 );
+
+insert into usuarios(email,senha) values ("donodaoficina@gmail.com","$2b$12$PI6OjAlgY3QTAwvIfi1vWuQ6m31OmQgbkzRPkWmcc0yVJV55EfLPi");
+-- senha pura: DonoOficina123#
