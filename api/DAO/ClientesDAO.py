@@ -17,7 +17,10 @@ class ClienteDAO:
         if not affected:
             raise Exception("Falha ao inserir cliente")
         print("✅ ClientesDAO.create()")
-        return objCliente.cpf
+        if objCliente.cpf == None:
+            return False
+        else:
+            return objCliente.cpf
 
     def readALL(self)-> list[dict]:
         SQL = "SELECT * FROM clientes;"

@@ -6,7 +6,7 @@ class CarroDAO:
         print("⬆️  CarroDAO.__init__()")
         self.__database = database_dependency
     
-    def create(self, objCarro: Carro) -> None:
+    def create(self, objCarro: Carro) -> str:
         SQL = """INSERT INTO carros (placa,montadora,modelo,cor,clientes_cpf) 
                 VALUES (%s,%s,%s,%s,%s)"""
         
@@ -26,6 +26,7 @@ class CarroDAO:
         if not affected:
             raise Exception("Falha ao inserir carro")
         print("✅ CarroDAO.create()")
+        return objCarro.placa
     
     def readALL(self)-> list[dict]:
         SQL = """
