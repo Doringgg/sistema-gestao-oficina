@@ -1,5 +1,4 @@
 import re
-from argon2 import PasswordHasher
 
 class Usuario: 
     def __init__(self):
@@ -49,13 +48,24 @@ class Usuario:
     
     @senha.setter
     def senha(self, value):
-        if value is None:
-            raise ValueError("Senha nula")
-        value = value.strip()
-        if len(value) < 6 or len(value) > 100:
-            raise ValueError("Senha Inválida")
-        pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\[\]{}|;:,.<>?/])[A-Za-z\d!@#$%^&*()\-_=+\[\]{}|;:,.<>?/]{6,}$'
-        if not re.match(pattern,value):
-            raise ValueError("Senha Inválida")
-        ph = PasswordHasher()
-        self.__senha = ph.hash(value)
+        if not isinstance(value, str):
+            raise ValueError("senha deve ser uma string.")
+
+        senha_trimmed = value.strip()
+
+        if senha_trimmed == "":
+            raise ValueError("senha não pode ser vazia.")
+
+        if len(senha_trimmed) < 6:
+            raise ValueError("senha deve ter pelo menos 6 caracteres.")
+
+        if not any(c.isupper() for c in senha_trimmed):
+            raise ValueError("senha deve conter pelo menos uma letra maiúscula.")
+
+        if not any(c.isdigit() for c in senha_trimmed):
+            raise ValueError("senha deve conter pelo menos um número.")
+
+        if not any(c in "!@#$%^&*(),.?\":{}|<>" for c in senha_trimmed):
+            raise ValueError("senha deve conter pelo menos um caractere especial.")
+        
+        self.__senha = senha_trimmed

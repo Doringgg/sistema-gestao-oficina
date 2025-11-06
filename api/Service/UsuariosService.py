@@ -14,9 +14,9 @@ class UsuarioService:
 
         objUsuario = Usuario()
         objUsuario.email = jsonUsuario["email"]
-        senha_plain_text = jsonUsuario["senha"]
+        objUsuario.senha = jsonUsuario["senha"]
 
-        encontrado = self.__usuarioDAO.login(objUsuario.email, senha_plain_text)
+        encontrado = self.__usuarioDAO.login(objUsuario)
 
         if not encontrado:
             raise ErrorResponse(
