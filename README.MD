@@ -17,16 +17,17 @@ Sistema de gestão para oficinas automotivas desenvolvido em Flask, proporcionan
 ### ✅ Concluídas
 - [x] **Entidade Cliente** - CPF, nome e telefone validados
 - [x] **Entidade Carro** - Placa, montadora, modelo e cor validados
+- [x] **Entidade Usuário** - Email e senha validados
 - [x] **Validações robustas** com regex e verificações de domínio
 - [x] **Sistema de properties** para garantir integridade dos dados
-- [x] **Hash de senhas** com Argon2 para segurança máxima
+- [x] **Hash de senhas** com Bcrypt para segurança máxima
+- [x] **API REST** com endpoints completos
+- [x] **Sistema de autenticação** JWT
+- [x] **Integração com banco de dados** MySQL
+- [x] **Relatórios e dashboard** administrativo
 
 ### 🔄 Em Desenvolvimento
-- [ ] **API REST** com endpoints completos
-- [ ] **Sistema de autenticação** JWT
-- [ ] **Integração com banco de dados** MySQL
 - [ ] **Frontend** ...
-- [ ] **Relatórios e dashboard** administrativo
 
 ## 🏗️ Estrutura do Projeto
 
@@ -34,8 +35,8 @@ Sistema de gestão para oficinas automotivas desenvolvido em Flask, proporcionan
 
 ## 🔐 Segurança de Senhas
 
-### Hash com Argon2
-- **Algoritmo**: Argon2id (vencedor do Password Hashing Competition)
+### Hash com Bcrypt
+- **Algoritmo**: Bcrypt
 - **Proteção**: Contra ataques de força bruta e rainbow tables
 - **Requisitos mínimos**:
   - 6+ caracteres
@@ -48,8 +49,9 @@ Sistema de gestão para oficinas automotivas desenvolvido em Flask, proporcionan
 
 - **Backend**: Python + Flask
 - **Validações**: Regex + Lógica de domínio
-- **Segurança**: Argon2 para hash de senhas
+- **Segurança**: Bcrypt para hash de senhas
 - **Banco de Dados**: MySQL (planejado)
+- **Token JWT**: Token para autenticação
 
 ## 📦 Instalação e Uso
 
@@ -61,6 +63,6 @@ Sistema de gestão para oficinas automotivas desenvolvido em Flask, proporcionan
 
 **⚠️ SISTEMA EM FASE DE CONSTRUÇÃO ⚠️**
 
-![Progress](https://img.shields.io/badge/Progresso-30%25-yellow?style=for-the-badge)
+![Progress](https://img.shields.io/badge/Progresso-70%25-yellow?style=for-the-badge)
 
 </div>
