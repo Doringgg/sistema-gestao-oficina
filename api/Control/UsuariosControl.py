@@ -1,9 +1,9 @@
 from flask import request, jsonify
 from api.Service.UsuariosService import UsuarioService
 
-class FuncionarioControl:
+class UsuariosControl:
     def __init__(self, usuario_service: UsuarioService):
-        print("⬆️  FuncionarioControl.constructor()")
+        print("⬆️  UsuariosControl.constructor()")
         self.__usuario_service = usuario_service
 
     def login(self):
