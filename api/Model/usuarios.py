@@ -59,4 +59,3 @@ class Usuario:
             raise ValueError("Senha Inválida")
         ph = PasswordHasher()
         self.__senha = ph.hash(value)
-    

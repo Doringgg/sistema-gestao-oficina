@@ -105,9 +105,9 @@ class CarroDAO:
         
         return affected > 0
     
-    def delete(self, carro: Carro) -> bool:
+    def delete(self, placa) -> bool:
         SQL = "DELETE FROM carros WHERE placa = %s;"
-        params = (carro.placa,)
+        params = (placa,)
 
         with self.__database.get_connection() as connection:
             with connection.cursor() as cursor:
@@ -117,3 +117,18 @@ class CarroDAO:
 
         print("✅ CarroDAO.delete()")
         return affected > 0
+    
+    def findByField(self, field: str, value) -> list[dict]:
+        fields = ["placa","clientes_cpf"]
+        if field not in fields:
+            raise ValueError("Campo inválido para busca")
+        
+        SQL = f"SELECT * FROM carros WHERE {field} = %s;"
+        params = (value,)
+        with self.__database.get_connection() as connection:
+            with connection.cursor(dictionary=True) as cursor:
+                cursor.execute(SQL, params)
+                resultados = cursor.fetchall()
+
+        print(f"✅ CarroDAO.findByField('{field}') -> {len(resultados)} registros encontrados")
+        return resultados

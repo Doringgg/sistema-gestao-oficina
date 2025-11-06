@@ -5,7 +5,7 @@ class ClienteDAO:
         print("⬆️  ClientesDAO.__init__()")
         self.__database = database_dependency
 
-    def create(self, objCliente: Cliente) -> None:
+    def create(self, objCliente: Cliente) -> str:
         SQL = "INSERT INTO clientes (cpf,nome,telefone) VALUES (%s,%s,%s);"
         params = (objCliente.cpf, objCliente.nome, objCliente.telefone)
 
@@ -17,6 +17,7 @@ class ClienteDAO:
         if not affected:
             raise Exception("Falha ao inserir cliente")
         print("✅ ClientesDAO.create()")
+        return objCliente.cpf
 
     def readALL(self)-> list[dict]:
         SQL = "SELECT * FROM clientes;"
@@ -66,3 +67,19 @@ class ClienteDAO:
         
         print("✅ ClientesDAO.delete()")
         return affected > 0
+    
+    def findByField(self, field: str, value) -> list[dict]:
+        allowed_fields = ["cpf","telefone"]
+        if field not in allowed_fields:
+            raise ValueError(f"Campo inválido para busca: {field}")
+        
+        SQL = f"SELECT * FROM clientes WHERE {field} = %s;"
+        params = (value,)
+
+        with self.__database.get_connection() as connection:
+            with connection.cursor(dictionary=True) as cursor:
+                cursor.execute(SQL, params)
+                resultados = cursor.fetchall()
+        
+        print("✅ ClienteDAO.findByField()")
+        return resultados
